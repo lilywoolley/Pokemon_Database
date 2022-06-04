@@ -1,0 +1,37 @@
+<html>
+<head>
+    <title>Evolutions</title>
+</head>
+<body>
+    <h1>Evolutions</h1>
+    <table>
+        <thead>
+        <tr>
+            {% for key in Evolutions[0].keys() %}
+            <th>{{ key }}</th>
+            {% endfor %}
+        </tr>
+        <tbody>
+        {% for evolution in Evolutions %}
+        <tr>
+            {% for key in Evolutions[0].keys() %}
+            <td>{{evolution[key]}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <form method="POST" action="/evolutions">
+        <fieldset>
+            <legend>Add an Evolution:</legend>
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" size="5" maxlength="100" required="required">
+            <label for="lvl">Level Requirement</label>
+            <input type="number" name="lvl" id="lvl" size="5" maxlength="100">
+            <label for="item">Item Requirement</label>
+            <input type="text" name="item" id="item" size="5" maxlength="100">
+            <input type="submit" value="submit">
+        </fieldset>
+    </form>
+    <p><a href={{url_for('root')}}>Home</a></p>
+</body>
+</html>

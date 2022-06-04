@@ -1,0 +1,35 @@
+<html>
+<head>
+    <title>Regions</title>
+</head>
+<body>
+    <h1>Regions</h1>
+    <table>
+        <thead>
+        <tr>
+            {% for key in Regions[0].keys() %}
+            <th>{{ key }}</th>
+            {% endfor %}
+        </tr>
+        <tbody>
+        {% for region in Regions %}
+        <tr>
+            {% for key in Regions[0].keys() %}
+            <td>{{region[key]}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <form method="POST" action="/regions">
+        <fieldset>
+            <legend>Add a new Region:</legend>
+            <label for="region_name">Name</label>
+            <input type="text" name="region_name" id="region_name" size="5" maxlength="100" required>
+            <label for="region_climate">Climate</label>
+            <input type="text" name="region_climate" id="region_climate" size="5" maxlength="100" required>
+            <input type="submit" value="submit">
+        </fieldset>
+    </form>
+    <p><a href={{url_for('root')}}>Home</a></p>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>Pokemon</title>
+</head>
+<body>
+    <h1>Pokemon</h1>
+    <table>
+        <thead>
+        <tr>
+            {% for key in Pokemon[0].keys() %}
+            <th>{{ key }}</th>
+            {% endfor %}
+        </tr>
+        <tbody>
+        {% for pokemon in Pokemon %}
+        <tr>
+            {% for key in Pokemon[0].keys() %}
+            <td>{{pokemon[key]}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
+    <form method="POST" action="/pokemon">
+        <fieldset>
+            <legend>Add a new Pokemon:</legend>
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" size="5" maxlength="100" required="required">
+            <label for="type_1">Type</label>
+            <input type="text" name="type_1" id="type_1" size="5" maxlength="100" required="required">
+            <label for="type_2">Secondary Type</label>
+            <input type="text" name="type_2" id="type_2" size="5" maxlength="100">
+            <label for="region_ID">Region of Origin</label>
+            <input type="number" name="region_ID" id="region_ID" size="5" maxlength="100" required="required">
+            <label for="evolution_ID">Evolution</label>
+            <input type="number" name="evolution_ID" id="evolution_ID" size="5" maxlength="100">
+            <input type="submit" value="submit">
+        </fieldset>
+        <fieldset>
+            <legend>Delete a Pokemon:</legend>
+            <label for="pokemon_ID">Pokemon ID</label>
+            <input type="number" name="pokemon_ID" id="pokemon_ID" size="5" maxlength="100" required="required">
+            <input type="submit" value="submit">
+        </fieldset>
+    </form>
+    <p><a href={{url_for('root')}}>Home</a></p>
+</body>
+</html>
